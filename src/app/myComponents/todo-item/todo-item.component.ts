@@ -8,7 +8,9 @@ import { Todo } from 'src/app/Todo';
 })
 export class TodoItemComponent implements OnInit {
   @Input() todo : Todo;
+  @Input() i : Number;
   @Output() todoDelete : EventEmitter<Todo> = new EventEmitter();
+  @Output() todoCheck : EventEmitter<Todo> = new EventEmitter();
   constructor() { }
 
   ngOnInit(): void {
@@ -16,6 +18,9 @@ export class TodoItemComponent implements OnInit {
   onDelete(todo : Todo){
     this.todoDelete.emit(todo);
     //alert('Delete Button Clicked '+todo.sno);
+  }
+  onCheckboxClick(todo : Todo){
+    this.todoCheck.emit(todo);
   }
 
 }
